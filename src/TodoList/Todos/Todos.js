@@ -1,8 +1,9 @@
-import React,{useState} from 'react'
+import React from 'react';
+import TodoInput from './TodoInput/TodoInput';
 import TodoItem from './TodoItem/TodoItem'
 
 function Todos() {
-    const [inputData, setInputData] = useState('');
+    
     const todos = [
         {
             title: 'Buy New SweatShirts'
@@ -34,9 +35,7 @@ function Todos() {
                 }
                 return <TodoItem todo={todo} />
             })}
-            <div className="todo-input">
-                <input type="text" className="form-control" placeholder="create todo" value={inputData} onChange={(e) => setInputData(e.target.value)} />
-            </div>
+            <TodoInput />
         </>
     )
 }

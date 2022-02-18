@@ -1,9 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 function TodoInput() {
-  return (
-    <div>TodoInput</div>
-  )
+    const [inputData, setInputData] = useState('');
+    return (
+        <div className="todo-input">
+            <input type="text" className="form-control" placeholder="create todo" value={inputData} onChange={(e) => setInputData(e.target.value)} />
+        </div>
+    )
 }
 
 export default TodoInput
