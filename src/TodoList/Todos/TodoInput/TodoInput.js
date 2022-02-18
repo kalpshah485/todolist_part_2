@@ -4,8 +4,14 @@ function TodoInput(props) {
     const [inputData, setInputData] = useState('');
     const handleEnter = (e) => {
         if (e.key === 'Enter') {
-            props.toggleHideBtn();
-            setInputData('');
+            if (inputData === '') {
+                alert('Please enter some value')
+            }
+            else{
+                props.addTodo(inputData);
+                props.toggleHideBtn();
+                setInputData('');
+            }
         }
     }
     return (
