@@ -2,7 +2,7 @@ body {
   background-color: #f0efe9;
 }
 .box {
-  width: 400px;
+  max-width: 400px;
   margin: 100px auto;
   padding: 50px !important;
 }

@@ -1,7 +1,8 @@
-import React from 'react'
+import React,{useState} from 'react'
 import TodoItem from './TodoItem/TodoItem'
 
 function Todos() {
+    const [inputData, setInputData] = useState('');
     const todos = [
         {
             title: 'Buy New SweatShirts'
@@ -25,12 +26,19 @@ function Todos() {
             title: 'Go for the Walk'
         }
     ]
-    return todos.map((todo,index) => {
-        if(index === 0 || index === 1) {
-            return <TodoItem todo={todo} completed={true} display='d-inline' />
-        }
-        return <TodoItem todo={todo} />
-    })
+    return (
+        <>
+            {todos.map((todo, index) => {
+                if (index === 0 || index === 1) {
+                    return <TodoItem todo={todo} completed={true} display='d-inline' />
+                }
+                return <TodoItem todo={todo} />
+            })}
+            <div className="todo-input">
+                <input type="text" className="form-control" placeholder="create todo" value={inputData} onChange={(e) => setInputData(e.target.value)} />
+            </div>
+        </>
+    )
 }
 
 export default Todos
