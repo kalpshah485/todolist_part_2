@@ -2,8 +2,7 @@ import React from 'react';
 import TodoInput from './TodoInput/TodoInput';
 import TodoItem from './TodoItem/TodoItem'
 
-function Todos() {
-    
+function Todos(props) {
     const todos = [
         {
             title: 'Buy New SweatShirts'
@@ -35,7 +34,7 @@ function Todos() {
                 }
                 return <TodoItem todo={todo} />
             })}
-            <TodoInput />
+            <TodoInput hideBtn={props.hideBtn} toggleHideBtn={props.toggleHideBtn} />
         </>
     )
 }

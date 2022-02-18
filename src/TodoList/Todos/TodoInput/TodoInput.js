@@ -1,10 +1,23 @@
 import React, { useState } from 'react'
 
-function TodoInput() {
+function TodoInput(props) {
     const [inputData, setInputData] = useState('');
+    const handleEnter = (e) => {
+        if (e.key === 'Enter') {
+            props.toggleHideBtn();
+            setInputData('');
+        }
+    }
     return (
-        <div className="todo-input">
-            <input type="text" className="form-control" placeholder="create todo" value={inputData} onChange={(e) => setInputData(e.target.value)} />
+        <div className={`${props.hideBtn ? 'd-block' : 'd-none'}`}>
+            <input 
+                type="text" 
+                className="form-control" 
+                placeholder="create todo" 
+                value={inputData} 
+                onKeyPress={(e) => handleEnter(e)}
+                onChange={(e) => setInputData(e.target.value)} 
+            />
         </div>
     )
 }
