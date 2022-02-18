@@ -1,7 +1,9 @@
-import React from 'react'
+import React from 'react';
+import TodoInput from './TodoInput/TodoInput';
 import TodoItem from './TodoItem/TodoItem'
 
 function Todos() {
+    
     const todos = [
         {
             title: 'Buy New SweatShirts'
@@ -25,12 +27,17 @@ function Todos() {
             title: 'Go for the Walk'
         }
     ]
-    return todos.map((todo,index) => {
-        if(index === 0 || index === 1) {
-            return <TodoItem todo={todo} completed={true} display='d-inline' />
-        }
-        return <TodoItem todo={todo} />
-    })
+    return (
+        <>
+            {todos.map((todo, index) => {
+                if (index === 0 || index === 1) {
+                    return <TodoItem todo={todo} completed={true} display='d-inline' />
+                }
+                return <TodoItem todo={todo} />
+            })}
+            <TodoInput />
+        </>
+    )
 }
 
 export default Todos
