@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import TodoInput from './TodoInput/TodoInput';
 import TodoItem from './TodoItem/TodoItem'
 
 function Todos(props) {
-    const todos = [
+    const todoArr = [
         {
             title: 'Buy New SweatShirts'
         },
@@ -26,6 +26,10 @@ function Todos(props) {
             title: 'Go for the Walk'
         }
     ]
+    const [todos, setTodos] = useState(todoArr);
+    const addTodo = (title) => {
+        setTodos([...todos,{title}]);
+    }
     return (
         <>
             {todos.map((todo, index) => {
@@ -34,7 +38,7 @@ function Todos(props) {
                 }
                 return <TodoItem todo={todo} />
             })}
-            <TodoInput hideBtn={props.hideBtn} toggleHideBtn={props.toggleHideBtn} />
+            <TodoInput hideBtn={props.hideBtn} toggleHideBtn={props.toggleHideBtn} addTodo={addTodo} />
         </>
     )
 }
