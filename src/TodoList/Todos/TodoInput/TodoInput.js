@@ -1,7 +1,13 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 function TodoInput(props) {
     const [inputData, setInputData] = useState('');
+    useEffect(() => {
+        if (props.hideBtn) {
+            document.querySelector('input').focus();
+        }
+    },[props.hideBtn])
+    
     const handleEnter = (e) => {
         console.log(e.key);
         if (e.key === 'Enter') {
@@ -19,7 +25,7 @@ function TodoInput(props) {
         }
     }
     return (
-        <div className={`${props.hideBtn ? 'd-block' : 'd-none'}`}>
+        <div className={`todo-input ${props.hideBtn ? 'd-block' : 'd-none'}`}>
             <input 
                 type="text" 
                 className="form-control" 
@@ -29,7 +35,7 @@ function TodoInput(props) {
                 onChange={(e) => setInputData(e.target.value)} 
             />
         </div>
-    )
-}
+    );
+};
 
 export default TodoInput
