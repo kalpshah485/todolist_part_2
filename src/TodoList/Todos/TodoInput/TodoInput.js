@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 function TodoInput(props) {
     const [inputData, setInputData] = useState('');
     const handleEnter = (e) => {
+        console.log(e.key);
         if (e.key === 'Enter') {
             if (inputData === '') {
                 alert('Please enter some value')
@@ -12,6 +13,9 @@ function TodoInput(props) {
                 props.toggleHideBtn();
                 setInputData('');
             }
+        } else if (e.key === 'Escape') {
+            props.toggleHideBtn();
+            setInputData('');
         }
     }
     return (
@@ -21,7 +25,7 @@ function TodoInput(props) {
                 className="form-control" 
                 placeholder="create todo" 
                 value={inputData} 
-                onKeyPress={(e) => handleEnter(e)}
+                onKeyUp={(e) => handleEnter(e)}
                 onChange={(e) => setInputData(e.target.value)} 
             />
         </div>
