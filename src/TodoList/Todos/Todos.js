@@ -32,13 +32,15 @@ function Todos(props) {
     }
     return (
         <>
+        <div className="todos">
             {todos.map((todo, index) => {
                 if (index === 0 || index === 1) {
                     return <TodoItem key={index} todo={todo} completed={true} display='d-inline' />
                 }
                 return <TodoItem key={index} todo={todo} />
             })}
-            <TodoInput hideBtn={props.hideBtn} toggleHideBtn={props.toggleHideBtn} addTodo={addTodo} />
+        </div>
+        <TodoInput hideBtn={props.hideBtn} toggleHideBtn={props.toggleHideBtn} addTodo={addTodo} />
         </>
     )
 }

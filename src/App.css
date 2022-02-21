@@ -9,6 +9,7 @@ body {
 .button {
   position: absolute;
   margin-left: -50px;
+  bottom: -50;
   border-radius: 50%;
   height: 100px;
   width: 100px;
@@ -30,16 +31,24 @@ body {
 }
 .month-year {
   margin-top: 10px;
-  margin-left: 10px;
+  margin-left: 15px;
   font-size: 10px;
 }
 .day {
   font-size: 20px;
   margin-top: 8px;
 }
+.todos {
+  max-height: 400px;
+  overflow-x: clip;
+  overflow-y: auto;
+}
 .todo-item {
   padding-top: 15px;
   padding-bottom: 15px;
+}
+.todo-input {
+  padding: auto;
 }
 .icon {
   padding-right: 2px;
