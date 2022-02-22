@@ -32,6 +32,7 @@ function Todos(props) {
             console.log("removed");
             setTodos([]);
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     },[]);
     useEffect(() => {
         if (todos.length === 0) {
@@ -42,6 +43,7 @@ function Todos(props) {
             localStorage.setItem('expires', expiry);
         }
         localStorage.setItem('todos', JSON.stringify(todos));
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [todos,expiry]);
     const toggleCheck = (index) => {
         let newTodos = [...todos];
