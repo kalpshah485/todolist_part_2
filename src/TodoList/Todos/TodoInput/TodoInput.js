@@ -9,7 +9,6 @@ function TodoInput(props) {
     },[props.hideBtn])
     
     const handleEnter = (e) => {
-        console.log(e.key);
         if (e.key === 'Enter') {
             if (inputData === '') {
                 alert('Please enter some value')
