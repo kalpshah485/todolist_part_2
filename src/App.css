@@ -44,8 +44,11 @@ body {
   overflow-y: auto;
 }
 .todo-item {
-  padding-top: 15px;
-  padding-bottom: 15px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+.todo-title {
+  height: 30px;
 }
 .todo-input {
   padding: auto;
