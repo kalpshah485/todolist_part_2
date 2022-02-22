@@ -1,52 +1,54 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import TodoInput from './TodoInput/TodoInput';
 import TodoItem from './TodoItem/TodoItem'
 
+const getLocalItems = () => {
+    let list = localStorage.getItem('todos');
+
+    if (list) {
+        return JSON.parse(localStorage.getItem('todos'));
+    } else {
+        return [];
+    }
+}
+
+const getExpires = () => {
+    let expDate = localStorage.getItem('expires');
+    if (expDate) {
+        return expDate;
+    } else {
+        return '';
+    }
+}
+
 function Todos(props) {
-    const todoArr = [
-        {
-            title: 'Buy New SweatShirts',
-            checked: true,
-            createdAt: new Date()
-        },
-        {
-            title: 'Begin Promotional Phase',
-            checked: true,
-            createdAt: new Date()
-        },
-        {
-            title: 'Read an article',
-            checked: false,
-            createdAt: new Date()
-        },
-        {
-            title: 'Try not to fall asleep',
-            checked: false,
-            createdAt: new Date()
-        },
-        {
-            title: 'Watch \'Sherlock\'',
-            checked: false,
-            createdAt: new Date()
-        },
-        {
-            title: 'Begin QA for the product',
-            checked: false,
-            createdAt: new Date()
-        },
-        {
-            title: 'Go for the Walk',
-            checked: false,
-            createdAt: new Date()
+    const today = new Date();
+    const date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + (today.getDate());
+    const expiry = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + (today.getDate() + 1);
+    const expires = getExpires();
+    const [todos, setTodos] = useState(getLocalItems());
+    useEffect(() => {
+        if (date >= expires) {
+            console.log("removed");
+            setTodos([]);
         }
-    ]
-    const [todos, setTodos] = useState(todoArr);
+    },[]);
+    useEffect(() => {
+        if (todos.length === 0) {
+            console.log("setted expDate");
+            localStorage.setItem('expires', expiry);
+        } else if (!expires){
+            console.log("setted expDate");
+            localStorage.setItem('expires', expiry);
+        }
+        localStorage.setItem('todos', JSON.stringify(todos));
+    }, [todos,expiry]);
     const toggleCheck = (index) => {
         let newTodos = [...todos];
-        if (todos[index].checked) {
-            todos[index].checked = false;
+        if (newTodos[index].checked) {
+            newTodos[index].checked = false;
         }else{
-            todos[index].checked = true;
+            newTodos[index].checked = true;
         }
         setTodos(newTodos);
     }

@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 
 function TodoItem(props) {
   const [display, setDisplay] = useState(props.todo.checked);
+  
   const handleDisplay = () => {
     if (props.todo.checked) {
       setDisplay(true);
