@@ -53,7 +53,7 @@ function Todos(props) {
         setTodos(newTodos);
     }
     const addTodo = (title) => {
-        setTodos([...todos,{title,checked: false,createdAt: new Date()}]);
+        setTodos([...todos,{title,checked: false}]);
     }
     return (
         <>
